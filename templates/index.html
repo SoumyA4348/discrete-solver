@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combinatorics Calculator</title>
+  <meta name="description"
+    content="Solve combinatorics word problems. Instantly identify permutations, combinations, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+  <!-- Animated background grid -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">∑</span>
+        <span class="logo-text">Discrete Solver</span>
+      </div>
+      <p class="logo-tagline">The Combinatorics Calculator for Joe Sawada</p>
+    </header>
+
+    <!-- Main card -->
+    <main class="card">
+
+      <div class="card-section">
+        <label class="input-label" for="question-input">
+          <span class="label-icon">✦</span> Your Word Problem
+        </label>
+        <textarea id="question-input" class="question-textarea"
+          placeholder="e.g. How many ways can a committee of 3 be chosen from 10 people?" rows="3"
+          spellcheck="false"></textarea>
+
+        <button id="solve-btn" class="solve-btn" onclick="handleSolve()">
+          <span class="btn-text">Solve</span>
+          <span class="btn-icon">→</span>
+          <div class="btn-loader" id="btn-loader"></div>
+        </button>
+      </div>
+
+      <!-- Example chips -->
+      <div class="examples-section">
+        <p class="examples-label">Try an example:</p>
+        <div class="chips-row" id="chips-row"></div>
+      </div>
+
+    </main>
+
+    <!-- Result panel -->
+    <div class="result-panel" id="result-panel">
+      <div class="result-inner">
+        <div class="result-badge" id="result-badge"></div>
+
+        <div class="result-grid">
+          <div class="result-stat">
+            <span class="stat-label">n (total)</span>
+            <span class="stat-value" id="stat-n">—</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-label">r (chosen)</span>
+            <span class="stat-value" id="stat-r">—</span>
+          </div>
+          <div class="result-stat formula-stat">
+            <span class="stat-label">Formula</span>
+            <span class="stat-value formula-val" id="stat-formula">—</span>
+          </div>
+        </div>
+
+        <div class="result-answer-section">
+          <p class="answer-label">Total ways: </p>
+          <p class="answer-number" id="answer-number">0</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error box -->
+    <div class="error-box" id="error-box">
+      <span class="error-icon">⚠</span>
+      <span id="error-text">Something went wrong.</span>
+    </div>
+
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+
+</html>

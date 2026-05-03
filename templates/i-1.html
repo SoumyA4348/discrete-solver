@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discrete Solver | Combinatorics Calculator</title>
+    <meta name="description" content="Combinatorics word problem solver." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/static/i-1.css?v=4" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∑</text></svg>">
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">∑</span>
+                <span class="logo-text">Discrete Solver</span>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button id="help-toggle" class="icon-btn" title="Help">
+                    <span>?</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Help modal -->
+        <div class="modal-overlay" id="help-modal">
+            <div class="modal">
+                <button class="modal-close" id="close-help">×</button>
+                <h2>How to use</h2>
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <div class="guide-icon">🔀</div>
+                        <h3>Permutations</h3>
+                        <p>Order <strong>matters</strong> — arranging people in a row</p>
+                        <code>n! / (n−r)!</code>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-icon">🎯</div>
+                        <h3>Combinations</h3>
+                        <p>Order <strong>doesn't matter</strong> — picking a team</p>
+                        <code>n! / (r! × (n−r)!)</code>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-icon">🔁</div>
+                        <h3>With Replacement</h3>
+                        <p>Items can be <strong>reused</strong> — PIN codes, passwords</p>
+                        <code>nʳ or C(n+r−1, r)</code>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-icon">🎩</div>
+                        <h3>Derangements</h3>
+                        <p>No item in its <strong>original</strong> place</p>
+                        <code>!n = n! × Σ(-1)ᵏ/k!</code>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-icon">⭕</div>
+                        <h3>Circular Perms</h3>
+                        <p>Arranging items in a <strong>circle</strong></p>
+                        <code>(n−1)!</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div class="hero-text">
+                <h1>Solve combinatorics problems <span class="gradient-text">instantly</span></h1>
+                <p class="subtitle">Type a word problem — our solver identifies the operation and calculates the answer.
+                </p>
+            </div>
+
+            <div class="input-card">
+                <div class="input-header">
+                    <label for="question-input">Your word problem</label>
+                    <span class="char-counter" id="input-counter">0 / 200</span>
+                </div>
+                <textarea id="question-input" class="question-textarea" rows="5" maxlength="200"
+                    placeholder="e.g. How many ways can a committee of 3 be chosen from 10 people?"></textarea>
+
+                <div class="input-footer">
+                    <div class="tool-btns">
+                        <button class="tool-btn" id="clear-btn" title="Clear">⌫ Clear</button>
+                        <button class="tool-btn" id="copy-btn" title="Copy result">📋 Copy result</button>
+                    </div>
+                    <button id="solve-btn" class="solve-btn" onclick="handleSolve()">
+                        <span class="btn-text">Solve →</span>
+                        <div class="btn-loader" id="btn-loader"></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="examples-row">
+                <span class="examples-label">Try:</span>
+                <div id="chips-row"></div>
+            </div>
+
+            <!-- Result panel -->
+            <div class="result-card" id="result-panel">
+                <div class="result-top">
+                    <span class="result-badge" id="result-badge"></span>
+                    <button class="tool-btn" id="share-btn" title="Share">↗ Share</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">n (total)</span>
+                        <span class="stat-val" id="stat-n">—</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">r (chosen)</span>
+                        <span class="stat-val" id="stat-r">—</span>
+                    </div>
+                    <div class="stat-box wide">
+                        <span class="stat-label">Formula</span>
+                        <span class="stat-val mono" id="stat-formula">—</span>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <p class="answer-label">Total possibilities</p>
+                    <div class="answer-display">
+                        <span id="answer-expr" class="answer-expr"></span>
+                        <span id="answer-equals" class="answer-equals" style="display:none;">=</span>
+                        <p class="answer-number" id="answer-number"><span id="answer-inner">0</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error box -->
+            <div class="error-box" id="error-box">
+                <span>⚠</span>
+                <span id="error-text">Something went wrong.</span>
+                <button id="error-close">×</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Discrete Solver &mdash; for Professor Joe</p>
+        </footer>
+    </div>
+
+    <script src="/static/i-1.js?v=4"></script>
+</body>
+
+</html>
