@@ -16,12 +16,16 @@ solver_service = None
 def load_model():
     global solver_service
     try:
-        model = joblib.load(MODEL_PATH)
+        if not os.path.exists(MODEL_PATH):
+            print("[INFO] Model file missing. Auto-training ML model...")
+            from combinatorics_solver.load_data import train_and_save_model
+            model = train_and_save_model()
+        else:
+            model = joblib.load(MODEL_PATH)
         solver_service = SolverService(model)
         print("[OK] ML model loaded successfully.")
     except Exception as e:
         print(f"[ERROR] Could not load ML model: {e}")
-        print("   Run combinatorics_solver/load_data.py first!")
         solver_service = SolverService(None)
 
 load_model()
@@ -29,6 +33,14 @@ load_model()
 @app.route("/")
 def index():
     return render_template("i-1.html")
+
+@app.route("/health", methods=["GET"])
+def health():
+    is_healthy = solver_service is not None and solver_service.model is not None
+    return jsonify({
+        "status": "healthy" if is_healthy else "degraded",
+        "model_loaded": is_healthy
+    }), 200 if is_healthy else 503
 
 @app.route("/solve", methods=["POST"])
 def solve():
@@ -57,3 +69,4 @@ def solve():
 if __name__ == "__main__":
     debug_mode = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
     app.run(debug=debug_mode)
+
