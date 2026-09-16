@@ -1,5 +1,6 @@
 # DiscreteSolver — Machine Learning Combinatorics Classifier & Solver
 
+[![CI](https://github.com/SoumyA4348/discrete-solver/actions/workflows/ci.yml/badge.svg)](https://github.com/SoumyA4348/discrete-solver/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-Web%20Framework-000000?style=flat-square&logo=flask)](https://flask.palletsprojects.com/)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-Support%20Vector%20Classifier-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)

@@ -49,3 +49,37 @@ def test_solve_route_empty_question(client):
                            content_type='application/json')
     assert response.status_code == 400
     assert "error" in response.get_json()
+
+def test_solve_route_question_too_long(client):
+    long_question = "A" * 301
+    response = client.post('/solve',
+                           data=json.dumps({"question": long_question}),
+                           content_type='application/json')
+    assert response.status_code == 400
+    assert "Question too long" in response.get_json()["error"]
+
+def test_solve_route_value_error(client):
+    with patch('app.solver_service.solve_question', side_effect=ValueError("No numbers found")):
+        response = client.post('/solve',
+                               data=json.dumps({"question": "hello"}),
+                               content_type='application/json')
+        assert response.status_code == 400
+        assert response.get_json()["error"] == "No numbers found"
+
+def test_health_route_healthy(client):
+    with patch('app.solver_service') as mock_service:
+        mock_service.model = MagicMock()
+        response = client.get('/health')
+        assert response.status_code == 200
+        data = response.get_json()
+        assert data["status"] == "healthy"
+        assert data["model_loaded"] is True
+
+def test_health_route_degraded(client):
+    with patch('app.solver_service') as mock_service:
+        mock_service.model = None
+        response = client.get('/health')
+        assert response.status_code == 503
+        data = response.get_json()
+        assert data["status"] == "degraded"
+        assert data["model_loaded"] is False

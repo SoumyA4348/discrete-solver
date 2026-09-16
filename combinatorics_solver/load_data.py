@@ -10,7 +10,7 @@ def train_and_save_model():
     df = pd.read_csv(os.path.join(_DIR, "dataset.csv"))
     X = df["question"]
     y = df["operation"]
-    model = make_pipeline(TfidfVectorizer(stop_words='english', ngram_range=(1, 2)), SVC(kernel='linear', probability=True))
+    model = make_pipeline(TfidfVectorizer(stop_words='english', ngram_range=(1, 2)), SVC(kernel='linear'))
     model.fit(X, y)
     model_path = os.path.join(_DIR, "combinatorics_model.joblib")
     joblib.dump(model, model_path)

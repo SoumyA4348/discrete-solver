@@ -55,3 +55,53 @@ def test_solver_service_no_numbers():
     service = SolverService(mock_model)
     with pytest.raises(ValueError, match="No numbers found"):
         service.solve_question("How many ways?")
+
+def test_solver_service_permutations_with_replacement():
+    mock_model = MagicMock()
+    mock_model.predict.return_value = ["permutations_with_replacement"]
+    service = SolverService(mock_model)
+
+    result = service.solve_question("Choose 3 options from 2 with repetition")
+    assert result["operation"] == "permutations_with_replacement"
+    assert result["n"] == 3
+    assert result["r"] == 2
+    assert result["answer"] == 9
+
+def test_solver_service_combinations_with_replacement():
+    mock_model = MagicMock()
+    mock_model.predict.return_value = ["combinations_with_replacement"]
+    service = SolverService(mock_model)
+
+    result = service.solve_question("Distribute 2 candies among 4 kids")
+    assert result["operation"] == "combinations_with_replacement"
+    assert result["r"] == 2
+    assert result["n"] == 4
+    assert result["answer"] == 10
+
+def test_solver_service_derangements():
+    mock_model = MagicMock()
+    mock_model.predict.return_value = ["derangements"]
+    service = SolverService(mock_model)
+
+    result = service.solve_question("Derangements of 4 items")
+    assert result["operation"] == "derangements"
+    assert result["n"] == 4
+    assert result["answer"] == 9
+
+def test_solver_service_circular_permutations():
+    mock_model = MagicMock()
+    mock_model.predict.return_value = ["circular_permutations"]
+    service = SolverService(mock_model)
+
+    result = service.solve_question("Arrange 5 people in a circle")
+    assert result["operation"] == "circular_permutations"
+    assert result["n"] == 5
+    assert result["answer"] == 24
+
+def test_solver_service_unknown_operation():
+    mock_model = MagicMock()
+    mock_model.predict.return_value = ["unknown_math_op"]
+    service = SolverService(mock_model)
+
+    with pytest.raises(ValueError, match="Unknown operation"):
+        service.solve_question("Choose 3 from 5")
