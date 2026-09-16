@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/SoumyA4348/discrete-solver/actions/workflows/ci.yml/badge.svg)](https://github.com/SoumyA4348/discrete-solver/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Flask](https://img.shields.io/badge/Flask-Web%20Framework-000000?style=flat-square&logo=flask)](https://flask.palletsprojects.com/)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-Support%20Vector%20Classifier-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![KaTeX](https://img.shields.io/badge/KaTeX-LaTeX%20Rendering-005B94?style=flat-square)](https://katex.org/)
@@ -66,21 +67,32 @@ User Free-Text Input
 
 ## Setup & Local Installation
 
-### 1. Clone & Install Dependencies
+### Option A: Run with Docker (Recommended / Fastest)
+
 ```bash
+# Clone the repository
 git clone https://github.com/SoumyA4348/discrete-solver.git
 cd discrete-solver
 
-# Create and activate virtual environment
+# Build and start the container
+docker compose up --build
+```
+Navigate to [http://localhost:5000](http://localhost:5000) in your browser.
+
+### Option B: Local Python Environment
+
+```bash
+# Clone and enter directory
+git clone https://github.com/SoumyA4348/discrete-solver.git
+cd discrete-solver
+
+# Create and activate virtual environment (Python 3.12+)
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install requirements
 pip install -r requirements.txt
-```
 
-### 2. Train Model & Run Server
-```bash
 # Train the SVC model once on labeled problem datasets
 python combinatorics_solver/load_data.py
 
