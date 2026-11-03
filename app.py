@@ -45,10 +45,14 @@ def health():
 @app.route("/solve", methods=["POST"])
 def solve():
     data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"error": "Request body must be valid JSON."}), 400
+    if not isinstance(data, dict) or not data:
+        return jsonify({"error": "Request body must be a JSON object."}), 400
 
-    question = data.get("question", "").strip()
+    question = data.get("question", "")
+    if not isinstance(question, str):
+        return jsonify({"error": "Question must be a string."}), 400
+
+    question = question.strip()
 
     if not question:
         return jsonify({"error": "Please enter a question."}), 400
