@@ -83,3 +83,17 @@ def test_health_route_degraded(client):
         data = response.get_json()
         assert data["status"] == "degraded"
         assert data["model_loaded"] is False
+
+def test_solve_route_non_string_question(client):
+    response = client.post('/solve',
+                           data=json.dumps({"question": 123}),
+                           content_type='application/json')
+    assert response.status_code == 400
+    assert "error" in response.get_json()
+
+def test_solve_route_non_object_body(client):
+    response = client.post('/solve',
+                           data=json.dumps(["Choose 3 from 5"]),
+                           content_type='application/json')
+    assert response.status_code == 400
+    assert "error" in response.get_json()
