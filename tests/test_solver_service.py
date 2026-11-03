@@ -13,6 +13,8 @@ def test_extract_numbers():
     assert extract_numbers("Twelve items or a dozen.") == [12, 12]
     assert extract_numbers("Zero items from ten.") == [0, 10]
     assert extract_numbers("No numbers here.") == []
+    assert extract_numbers("Seventeen books, choose nineteen.") == [17, 19]
+    assert extract_numbers("Thirty students, forty seats, fifty pens.") == [30, 40, 50]
 
 def test_solver_service_permutations():
     mock_model = MagicMock()
