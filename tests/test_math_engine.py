@@ -42,6 +42,19 @@ def test_derangements():
     assert math_engine.calculate_derangements(5) == 44
     assert math_engine.calculate_derangements(-1) == 0
 
+
+def test_derangements_larger_values():
+    assert math_engine.calculate_derangements(10) == 1334961
+    assert math_engine.calculate_derangements(-5) == 0
+
+def test_derangements_match_brute_force():
+    from itertools import permutations
+    for n in range(7):
+        expected = sum(
+            all(p[i] != i for i in range(n)) for p in permutations(range(n))
+        )
+        assert math_engine.calculate_derangements(n) == expected
+
 def test_circular_permutations():
     assert math_engine.calculate_circular_permutations(5) == 24
     assert math_engine.calculate_circular_permutations(1) == 1

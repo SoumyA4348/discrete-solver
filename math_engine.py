@@ -63,17 +63,10 @@ def calculate_derangements(n: int) -> int:
     """
     if n < 0:
         return 0
-    if n == 0:
-        return 1
-    d = 0 if n == 1 else 1 # Subfactorial !1=0, !2=1
-    if n == 1: return 0
-    if n == 2: return 1
-    
-    # Using the iterative approach for !n = (n-1)(!(n-1) + !(n-2))
-    # or the simple iterative: d(i) = i*d(i-1) + (-1)^i
+    # Iterative recurrence: !0 = 1, !i = i * !(i-1) + (-1)^i
     d = 1
     for i in range(1, n + 1):
-        d = i * d + (-1)**i
+        d = i * d + (-1) ** i
     return d
 
 def calculate_circular_permutations(n: int) -> int:
