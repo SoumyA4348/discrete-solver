@@ -115,7 +115,7 @@ pytest tests/ -v
 ## Authors & Contributors
 
 * **Soumya Patel** — *Machine Learning Model Training, Mathematical Engine & Full-Stack Implementation* — [@SoumyA4348](https://github.com/SoumyA4348)
-* **Krish Shah** — *Co-Developer, Dataset Curation & Testing* — [@KSHAH01-can](https://github.com/KSHAH01-can)
+* **Krish Shah** — *Co-Developer, Dataset Curation & Testing* — [@KRISH-01-code](https://github.com/KRISH-01-code)
 
 *Developed collaboratively for academic discrete mathematics and algorithmic problem solving.*
 
