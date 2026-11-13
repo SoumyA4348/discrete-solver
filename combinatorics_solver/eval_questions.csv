@@ -1,0 +1,100 @@
+question,operation,n,r
+"A club with 12 members must choose a president, a vice-president and a treasurer. How many ways can this be done?","permutations",12,3
+"In how many ways can first, second and third prize be awarded among 10 runners?","permutations",10,3
+"How many 4-letter codes can be formed from the 26 letters of the alphabet if no letter is repeated?","permutations",26,4
+"Eight horses run a race. In how many different orders can the first four finish?","permutations",8,4
+"How many ways can 6 students be seated in a row of 6 chairs?","permutations",6,6
+"A playlist has 15 songs. How many ways can you pick and order 5 of them?","permutations",15,5
+"How many different 3-digit numbers can be made from the digits 1 to 9 without repeating a digit?","permutations",9,3
+"Seven people line up for a photo. How many arrangements are possible?","permutations",7,7
+"A teacher picks 2 of her 20 students to be class captain and deputy captain. How many ways can she do this?","permutations",20,2
+"From a team of 11 players, how many ways can a coach assign 5 distinct positions?","permutations",11,5
+"How many ways can the letters of the word PLANET be arranged?","permutations",6,6
+"In a contest with 30 entries, gold, silver and bronze medals are given. How many outcomes are possible?","permutations",30,3
+"How many ways can you schedule 4 different exams over 7 days if only one exam can be on each day?","permutations",7,4
+"Nine finalists compete. In how many ways can the top two spots be filled?","permutations",9,2
+"How many ways are there to park 5 cars in 8 numbered spaces, one car per space?","permutations",8,5
+"An ID tag uses 3 different symbols chosen from 10 symbols, and order matters. How many tags are possible?","permutations",10,3
+"How many ways can a family of five stand in a line?","permutations",5,5
+"A committee of 4 is to be chosen from 15 people. How many committees are possible?","combinations",15,4
+"How many ways can you choose 3 toppings from a list of 10?","combinations",10,3
+"A student must answer 8 of the 12 questions on an exam. How many choices does she have?","combinations",12,8
+"How many 5-card hands can be dealt from a standard 52-card deck?","combinations",52,5
+"From a group of 9 friends, how many ways can you invite 6 to dinner?","combinations",9,6
+"How many different teams of 11 can be picked from a squad of 18 players?","combinations",18,11
+"In how many ways can a jury of twelve be selected from 20 candidates?","combinations",20,12
+"How many handshakes happen if each of 25 people shakes hands with everyone else once?","combinations",25,2
+"A lottery draws 6 numbers from 49. How many different draws are possible?","combinations",49,6
+"How many subsets of size 3 does a set with 7 elements have?","combinations",7,3
+"A pizza shop offers 14 toppings. How many pizzas with exactly two toppings can you make?","combinations",14,2
+"Choose 5 books to take on vacation from a shelf of 16. How many selections are there?","combinations",16,5
+"How many ways can a manager pick 3 employees out of 10 for a training session?","combinations",10,3
+"How many lines are determined by 8 points in the plane if no three are collinear?","combinations",8,2
+"A group of 30 students elects 3 equal representatives. How many outcomes are possible?","combinations",30,3
+"How many ways can you pick 4 marbles from a bag of 13 different marbles?","combinations",13,4
+"From 7 men and 5 women, how many ways can a team of 4 men be formed?","combinations",7,4
+"How many 4-digit PIN codes are possible if digits can repeat?","permutations_with_replacement",10,4
+"A password has 6 characters, each one of 26 lowercase letters. How many passwords are possible?","permutations_with_replacement",26,6
+"Each of 8 questions on a quiz has 4 answer choices. How many ways can the quiz be answered?","permutations_with_replacement",4,8
+"A die is rolled 3 times. How many outcomes are possible?","permutations_with_replacement",6,3
+"A license plate has 3 positions, and each position can be any of 10 digits. How many plates are possible?","permutations_with_replacement",10,3
+"How many ways can you put 5 different letters into 3 mailboxes?","permutations_with_replacement",3,5
+"A lock has 4 dials, each showing the numbers 0 to 9. How many settings exist?","permutations_with_replacement",10,4
+"How many sequences of length 7 can be made using 2 symbols?","permutations_with_replacement",2,7
+"A restaurant offers 5 desserts. Each of 3 friends orders one dessert, and repeats are allowed. How many ways can they order?","permutations_with_replacement",5,3
+"How many 3-letter strings can be formed from 26 letters if letters may repeat?","permutations_with_replacement",26,3
+"Twelve students each pick one of 4 clubs. How many ways can they choose?","permutations_with_replacement",4,12
+"A binary string has length 16. How many such strings exist?","permutations_with_replacement",2,16
+"Six dice of different colours are rolled together. How many outcomes are possible?","permutations_with_replacement",6,6
+"You have 9 shirts and wear one each day for 4 days, and you may repeat shirts. How many outfit schedules are there?","permutations_with_replacement",9,4
+"A survey has 10 yes/no questions. How many different answer sheets are possible?","permutations_with_replacement",2,10
+"A coin is flipped 10 times. How many sequences of heads and tails are possible?","permutations_with_replacement",2,10
+"How many ways can you buy 6 donuts if the shop sells 4 kinds?","combinations_with_replacement",4,6
+"A bakery has 5 types of cookies. How many ways can you choose a dozen cookies?","combinations_with_replacement",5,12
+"How many ways can 10 identical candies be given to 3 children?","combinations_with_replacement",3,10
+"How many non-negative integer solutions does x1 + x2 + x3 + x4 = 7 have?","combinations_with_replacement",4,7
+"In how many ways can 8 identical balls be placed into 5 distinct boxes?","combinations_with_replacement",5,8
+"A shop sells 3 flavours of ice cream. How many different 4-scoop cups are possible if order does not matter?","combinations_with_replacement",3,4
+"How many ways can you pick 5 coins if pennies, nickels, dimes and quarters are available?","combinations_with_replacement",4,5
+"How many ways can 7 identical books be distributed among 4 shelves?","combinations_with_replacement",4,7
+"Choose 3 fruits from apples, bananas and oranges, with repetition allowed and order irrelevant. How many selections are there?","combinations_with_replacement",3,3
+"How many multisets of size 4 can be formed from a set of 6 elements?","combinations_with_replacement",6,4
+"A florist has 7 kinds of flowers. How many bouquets of 10 flowers can be made?","combinations_with_replacement",7,10
+"Distribute 20 identical pencils among 4 students. How many ways are there?","combinations_with_replacement",4,20
+"How many ways can 9 identical tokens be placed in 3 different jars?","combinations_with_replacement",3,9
+"How many ways are there to choose 6 bagels from 8 varieties?","combinations_with_replacement",8,6
+"An election has 4 candidates and 15 identical ballots are cast. How many vote totals are possible?","combinations_with_replacement",4,15
+"How many ways can 5 identical rings be worn on 4 fingers?","combinations_with_replacement",4,5
+"In how many ways can 12 identical apples be shared among 5 people?","combinations_with_replacement",5,12
+"Five letters are put into five addressed envelopes at random. In how many ways can every letter go into the wrong envelope?","derangements",5,5
+"At a party, 7 people check their hats. In how many ways can the hats be returned so that nobody gets their own?","derangements",7,7
+"How many permutations of 1 to 6 leave no number in its original position?","derangements",6,6
+"Eight students swap their homework so that no one grades their own. How many ways can this happen?","derangements",8,8
+"In a Secret Santa with 6 people, how many assignments ensure nobody draws their own name?","derangements",6,6
+"How many ways can 4 keys be put back on 4 hooks so that no key is on its original hook?","derangements",4,4
+"Ten people leave their coats and get one back at random. In how many ways does nobody get their own coat?","derangements",10,10
+"How many arrangements of the numbers 1 through 9 have no fixed points?","derangements",9,9
+"Three couples swap partners so that no one dances with their original partner. How many ways are there?","derangements",3,3
+"A teacher returns 12 tests at random. In how many ways can no student receive their own test?","derangements",12,12
+"How many ways can 5 people sit back down in 5 seats so that nobody is in their original seat?","derangements",5,5
+"Nine students exchange lunches so that no one eats their own lunch. How many ways are there?","derangements",9,9
+"Eleven employees are reassigned desks so that no one keeps their old desk. How many reassignments are possible?","derangements",11,11
+"How many derangements are there of 7 objects?","derangements",7,7
+"Six drivers are randomly given back car keys so that no one gets their own key. How many ways can this happen?","derangements",6,6
+"Four friends shuffle their phones so each person gets someone else's phone. In how many ways can this happen?","derangements",4,4
+"In how many ways can 6 people sit around a round table?","circular_permutations",6,6
+"How many ways can 8 friends be seated at a circular table?","circular_permutations",8,8
+"Ten knights sit at a round table. How many seating arrangements are there if rotations are considered the same?","circular_permutations",10,10
+"How many ways can 5 children form a ring?","circular_permutations",5,5
+"Seven delegates sit around a circular conference table. How many arrangements are there?","circular_permutations",7,7
+"How many ways can 12 people be arranged in a circle?","circular_permutations",12,12
+"In how many ways can four couples, eight people in total, sit around a round table?","circular_permutations",8,8
+"A merry-go-round has 9 horses for 9 children. How many distinct seatings are there up to rotation?","circular_permutations",9,9
+"How many ways can 3 people sit at a round table?","circular_permutations",3,3
+"Eleven players stand in a circle for a warm-up drill. How many arrangements are there?","circular_permutations",11,11
+"How many circular arrangements of 15 distinct beads are there if rotations count as the same?","circular_permutations",15,15
+"Six chefs gather around a round kitchen island. In how many orders can they stand?","circular_permutations",6,6
+"How many ways can 4 people be seated around a circular dinner table?","circular_permutations",4,4
+"At a round meeting table, 9 managers take seats. How many seating arrangements exist?","circular_permutations",9,9
+"Twenty dancers form a circle. How many arrangements are possible up to rotation?","circular_permutations",20,20
+"How many ways can you arrange 7 different plants around a circular garden bed?","circular_permutations",7,7
