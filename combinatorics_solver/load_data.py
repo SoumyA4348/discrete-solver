@@ -7,7 +7,9 @@ import joblib
 
 def train_and_save_model():
     _DIR = os.path.dirname(os.path.abspath(__file__))
-    df = pd.read_csv(os.path.join(_DIR, "dataset.csv"))
+    frames = [pd.read_csv(os.path.join(_DIR, name)) for name in ("dataset.csv", "train_generated.csv")
+              if os.path.exists(os.path.join(_DIR, name))]
+    df = pd.concat(frames, ignore_index=True)
     X = df["question"]
     y = df["operation"]
     model = make_pipeline(TfidfVectorizer(stop_words='english', ngram_range=(1, 2)), SVC(kernel='linear'))
@@ -21,4 +23,4 @@ if __name__ == "__main__":
     trained_model = train_and_save_model()
     test_question = ["How many ways to arrange 3 books from 5?"]
     prediction = trained_model.predict(test_question)
-    print(f"The ML predicts you need to use: {prediction[0]}")
+    print(f"The ML predicts you need to use: {prediction[0]}")
