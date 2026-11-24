@@ -16,6 +16,11 @@ def test_extract_numbers():
     assert extract_numbers("Seventeen books, choose nineteen.") == [17, 19]
     assert extract_numbers("Thirty students, forty seats, fifty pens.") == [30, 40, 50]
 
+def test_extract_compound_number_words():
+    assert extract_numbers("Choose 3 from twenty-five.") == [3, 25]
+    assert extract_numbers("Arrange forty two items in a row.") == [42]
+    assert extract_numbers("Sixty people, ninety-nine chairs.") == [60, 99]
+
 def test_solver_service_permutations():
     mock_model = MagicMock()
     mock_model.predict.return_value = ["permutations"]

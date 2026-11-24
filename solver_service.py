@@ -8,8 +8,12 @@ NUMBER_WORDS = {
     "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13,
     "fourteen": 14, "fifteen": 15, "sixteen": 16, "seventeen": 17,
     "eighteen": 18, "nineteen": 19, "twenty": 20, "thirty": 30, "forty": 40,
-    "fifty": 50, "dozen": 12
+    "fifty": 50, "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
+    "dozen": 12
 }
+
+TENS = "twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety"
+UNITS = "one|two|three|four|five|six|seven|eight|nine"
 
 FORMULAS = {
     "permutations": r"\frac{n!}{(n - r)!}",
@@ -32,6 +36,12 @@ LABELS = {
 def extract_numbers(text: str) -> List[int]:
     """Extracts integers from text, including word-based numbers."""
     text_lower = text.lower()
+    # "twenty-five" / "forty two" -> 25 / 42, before single words split them
+    text_lower = re.sub(
+        rf'\b({TENS})[-\s]({UNITS})\b',
+        lambda m: str(NUMBER_WORDS[m.group(1)] + NUMBER_WORDS[m.group(2)]),
+        text_lower,
+    )
     for word, num in NUMBER_WORDS.items():
         text_lower = re.sub(rf'\b{word}\b', str(num), text_lower)
     return [int(num) for num in re.findall(r'\d+', text_lower)]
